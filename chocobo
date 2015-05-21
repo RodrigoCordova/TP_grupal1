@@ -1,0 +1,32 @@
+bosqueTenebroso=[(100,f1),(50,f2),(120,f2),(200,f1),(80,f3)]
+
+pantanoDelDestino=[(40,f2),(90,(\(f,p,v)->f+p+v)),(120,fuerza),(20,fuerza)]
+f1 chocobo= velocidad chocobo * 2
+f2 chocobo= velocidad chocobo + fuerza chocobo
+f3 chocobo= velocidad chocobo / peso chocobo
+
+amarillo= (5,3,3)
+negro   = (4,4,4)
+blanco  = (2,3,6)
+rojo    = (3,3,4)
+
+fuerza (f,_,_)=f
+peso   (_,p,_)=p
+velocidad (_,_,v)=v
+
+apocalipsis=[("Leo",amarillo),("Gise",blanco),("Mati",negro),("Alf",rojo)]
+
+quickSort _ [] = []
+quickSort criterio (x:xs) =(quickSort criterio . filter (not . criterio x)) xs++ [x] ++(quickSort criterio . filter (criterio x)) xs
+-----------------------------------
+mayorSegun funcion valor1 valor2= (funcion valor1)>(funcion valor2)
+menorSegun funcion valor1 valor2= (funcion valor1)<(funcion valor2)
+--bosqueTenebroso=[(100,f1),(50,f2),(120,f2),(200,f1),(80,f3)]
+
+tiempo chocobo tramo= fst tramo/(snd tramo) chocobo
+tiempoTotal chocobo pista = sum[tiempo chocobo tramo|tramo<-pista]
+
+--esta funcion falta completar
+podio pista jinetes = take 3 [jinete|jinete<-jinetes,((tiempoTotal (snd jinete) pista)>0)]
+                  
+                    
